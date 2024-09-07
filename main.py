@@ -9,16 +9,12 @@ from pathlib import Path
 from grab_screenshot import grab_screenshot
 from llm import call_llm
 from pprint import pprint
+from prompt import PROMPT, REWRITE_PROMPT
 
 # Path to store screenshot and results
 DATA_DIR = "data"
 
 URLS = ["https://www.fuzzylabs.ai/"]
-
-PROMPT = """You are an expert in analyzing websites. 
-Given the screenshot of only the home page, please provide feedback on how the home page's content can be improved. 
-Also, comment on the style and image used and the home page content. It is not always required to critique, there will be some sections that will be good and need no further improvement. 
-"""
 
 
 def encode_image(image_path: str) -> str:
@@ -55,6 +51,7 @@ async def main() -> None:
     with open(f"{DATA_DIR}/results.json", "r") as fp:
         results = json.load(fp)
 
+    # First pass feedback using screenshot
     llm_responses = []
     for data in results:
         response = await call_llm(
@@ -65,6 +62,18 @@ async def main() -> None:
         llm_responses.append(response)
     for i, data in enumerate(results):
         data.update({"llm_response": llm_responses[i]})
+
+    # Rewrite content LLM agent
+    llm_responses = []
+    for data in results:
+        response = await call_llm(
+            model_name="anthropic/claude-3-opus-20240229",
+            user_message=REWRITE_PROMPT.format(LLM_RESPONSE=data["llm_response"]),
+            base64_image=encode_image(data["screenshot"]),
+        )
+        llm_responses.append(response)
+    for i, data in enumerate(results):
+        data.update({"rewrite_content": llm_responses[i]})
 
     pprint(results)
 

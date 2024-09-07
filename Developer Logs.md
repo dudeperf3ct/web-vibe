@@ -156,3 +156,11 @@ The first iteration is complete. Next, I will add a streamlit front-end to make 
 Streamlit does not play well with asyncio and it's functions. Switching to gradio instead. Worked only for 1 url failed for multiple submit with same error.
 
 (18:48) Instead of building front end let's use it to visualize the results.
+
+---
+
+(20:27) Back from dinner. First pass looks okay, shame the front end is not working as expected. Let's build a first reflection agent that helps content writer to improve the language or tone of the content.
+
+> Do we need to also provide a summary of what webpage or theme of the website is? For this, we will need to get the content of the site and pass it to an LLM for summarization task. (Let's circle back depending on how output looks like after implementing two steps above.)
+
+This was not required from the first pass. My guess is adding this as part of the prompt along with screenshot could improve the analysis for LLM. (TO BE TESTED) 
