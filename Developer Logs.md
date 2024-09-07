@@ -153,4 +153,6 @@ I wiill use [litellm](https://github.com/BerriAI/litellm) library that I had use
 
 The first iteration is complete. Next, I will add a streamlit front-end to make it easy to interact with this.
 
-Streamlit does not play well with asyncio and it's functions. Switching to gradio instead.
+Streamlit does not play well with asyncio and it's functions. Switching to gradio instead. Worked only for 1 url failed for multiple submit with same error.
+
+(18:48) Instead of building front end let's use it to visualize the results.

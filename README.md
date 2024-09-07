@@ -22,3 +22,13 @@ Pre-requisities
     ```bash
     uv run python main.py
     ```
+
+4. Visualize result using streamlit
+
+    ```bash
+    uv run streamlit run visualize_result.py
+    ```
+
+## Result
+
+![example](assets/example.png)

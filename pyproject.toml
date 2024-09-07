@@ -8,6 +8,7 @@ dependencies = [
     "crawlee[playwright]>=0.3.4",
     "litellm>=1.44.21",
     "python-dotenv>=1.0.1",
+    "streamlit>=1.38.0",
 ]
 
 [tool.uv]
