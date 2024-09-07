@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Hackathon project to provide feedback to content writers and web-designers."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "crawlee[playwright]>=0.3.4",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.6.4",
+]
