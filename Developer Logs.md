@@ -164,3 +164,7 @@ Streamlit does not play well with asyncio and it's functions. Switching to gradi
 > Do we need to also provide a summary of what webpage or theme of the website is? For this, we will need to get the content of the site and pass it to an LLM for summarization task. (Let's circle back depending on how output looks like after implementing two steps above.)
 
 This was not required from the first pass. My guess is adding this as part of the prompt along with screenshot could improve the analysis for LLM. (TO BE TESTED) 
+
+---
+
+(21:03) Looks like we have rewrite LLM agent. We can create a LLM agent that creates image based on the feedback from LLM response.
