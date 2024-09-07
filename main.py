@@ -22,13 +22,13 @@ Also, comment on the style and image used and the home page content. It is not a
 
 
 def encode_image(image_path: str) -> str:
-    """_summary_
+    """Convert screenshot image to base64.
 
     Args:
-        image_path (str): _description_
+        image_path (str): Path to png screenshot image.
 
     Returns:
-        str: _description_
+        str: Base64 encoded image
     """
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")

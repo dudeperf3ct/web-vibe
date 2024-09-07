@@ -1,7 +1,6 @@
 """Grab a screenshot for a given web url using playwright."""
 
 from crawlee.playwright_crawler import PlaywrightCrawler, PlaywrightCrawlingContext
-from pprint import pprint
 import hashlib
 
 
@@ -41,7 +40,6 @@ async def grab_screenshot(urls: list[str], data_dir: str) -> None:
             "title": await context.page.title(),
             "screenshot": screenshot_path,
         }
-        pprint(data)
 
         # Push the extracted data to the default dataset.
         await context.push_data(data)

@@ -4,15 +4,15 @@ from litellm import acompletion
 
 
 async def call_llm(model_name: str, user_message: str, base64_image: str) -> str:
-    """_summary_
+    """Call LLM endpoint.
 
     Args:
-        model_name (str): _description_
-        user_message (str): _description_
-        base64_image (str): _description_
+        model_name (str): Name of LLM and it's provider
+        user_message (str): User message to be passed to LLM
+        base64_image (str): Image encoded as base64
 
     Returns:
-        str: _description_
+        str: Generate response from LLM
     """
     messages = [
         {
