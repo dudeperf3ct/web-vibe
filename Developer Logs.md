@@ -146,3 +146,11 @@ Docs: https://crawlee.dev/python/docs/examples/playwright-crawler
 > Do we need to also provide a summary of what webpage or theme of the website is? For this, we will need to get the content of the site and pass it to an LLM for summarization task. (Let's circle back depending on how output looks like after implementing two steps above.)
 
 There are so many LLM gateway libraries to pick from and too many LLMs to choose from.
+
+The initial iteration using ChatGPT looks fine. There might be need to perform some prompt engineering on how the output is returned.
+
+I wiill use [litellm](https://github.com/BerriAI/litellm) library that I had used in past projects.
+
+The first iteration is complete. Next, I will add a streamlit front-end to make it easy to interact with this.
+
+Streamlit does not play well with asyncio and it's functions. Switching to gradio instead.

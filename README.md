@@ -14,3 +14,11 @@ Pre-requisities
     uv pip install .
     playwright install
     ```
+
+2. Add API secrets to `.env` file.
+
+3. Run the python script.
+
+    ```bash
+    uv run python main.py
+    ```

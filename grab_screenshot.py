@@ -1,19 +1,16 @@
 """Grab a screenshot for a given web url using playwright."""
 
-from pathlib import Path
-import asyncio
 from crawlee.playwright_crawler import PlaywrightCrawler, PlaywrightCrawlingContext
 from pprint import pprint
 import hashlib
 
-DATA_DIR = "data"
 
-
-async def grab_screenshot(urls: list[str]) -> None:
+async def grab_screenshot(urls: list[str], data_dir: str) -> None:
     """Grab and store screenshot using Playwright API.
 
     Args:
         urls (list[str]): List of url.
+        data_dir (str): Path to directory to store results and screenshot.
     """
     crawler = PlaywrightCrawler(
         # Limit the crawl to max requests. Remove or increase it for crawling all links.
@@ -35,11 +32,10 @@ async def grab_screenshot(urls: list[str]) -> None:
     async def request_handler(context: PlaywrightCrawlingContext) -> None:
         context.log.info(f"Processing {context.request.url} ...")
 
-        # TODO: Grab rest of the pages of the website and not only the homepage.
-
+        # TODO: Grab screenshot of rest of the pages and not only the homepage.
         # Extract data from the page using Playwright API.
         url_hash = hashlib.md5(str(context.request.url).encode("utf-8")).hexdigest()
-        screenshot_path = f"{DATA_DIR}/screenshot_{url_hash}.png"
+        screenshot_path = f"{data_dir}/screenshot_{url_hash}.png"
         data = {
             "url": context.request.url,
             "title": await context.page.title(),
@@ -57,19 +53,4 @@ async def grab_screenshot(urls: list[str]) -> None:
     await crawler.run(urls)
 
     # Export the entire dataset to a JSON file
-    await crawler.export_data(f"{DATA_DIR}/results.json")
-
-
-async def main(urls: list[str]) -> None:
-    """Main entrypoint.
-
-    Args:
-        urls (list[str]): List of urls
-    """
-    Path(DATA_DIR).mkdir(exist_ok=True)
-    await grab_screenshot(urls)
-
-
-if __name__ == "__main__":
-    urls = ["https://www.fuzzylabs.ai/"]
-    asyncio.run(main(urls))
+    await crawler.export_data(f"{data_dir}/results.json")
