@@ -4,6 +4,8 @@ Idea: Create a project that helps content writers and graphic designers evaluate
 
 Check [developer logs](./Developer%20Logs.md) for details on the progress.
 
+![Overview](./assets/overview.png)
+
 ## Getting Started
 
 Pre-requisities
