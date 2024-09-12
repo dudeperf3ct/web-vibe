@@ -33,7 +33,7 @@ def encode_image(image_path: str) -> str:
 def validate_env(selected_llm: str):
     """Validate if environment variables are set correctly."""
     if "claude" in selected_llm:
-        if os.environ.get("ANTHROPIC_API_KEY", None):
+        if os.environ.get("ANTHROPIC_API_KEY", None) is None:
             raise ValueError(
                 "Set Claude API Key in `.env` file `ANTHROPIC_API_KEY='key-here'`"
             )
